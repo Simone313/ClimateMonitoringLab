@@ -16,7 +16,10 @@ public class App extends Application {
     */
     public App() {}
     
-    
+    /**
+     * Metodo start
+     * @param stage 
+     */
     @Override
     public void start(Stage stage) {
         var javaVersion = SystemInfo.javaVersion();
