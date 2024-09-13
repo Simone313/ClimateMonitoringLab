@@ -1,0 +1,57 @@
+-J-Duser.language=
+-J-Duser.country=
+@options
+@packages
+@argfile
+--class-path
+'C:/Users/simo0/.m2/repository/org/openjfx/javafx-controls/13/javafx-controls-13.jar;C:/Users/simo0/.m2/repository/org/openjfx/javafx-graphics/13/javafx-graphics-13.jar;C:/Users/simo0/.m2/repository/org/openjfx/javafx-base/13/javafx-base-13.jar;C:/Users/simo0/.m2/repository/org/postgresql/postgresql/42.2.23/postgresql-42.2.23.jar'
+--module-path
+'C:/Users/simo0/.m2/repository/org/openjfx/javafx-controls/13/javafx-controls-13-win.jar;C:/Users/simo0/.m2/repository/org/openjfx/javafx-graphics/13/javafx-graphics-13-win.jar;C:/Users/simo0/OneDrive/Documenti/NetBeansProjects/ClimateMonitoringLab/target/classes;C:/Users/simo0/.m2/repository/org/openjfx/javafx-base/13/javafx-base-13-win.jar'
+--patch-module
+com.climatemonitoring.climatemonitoringlab='C:/Users/simo0/OneDrive/Documenti/NetBeansProjects/ClimateMonitoringLab/src/main/java'
+-encoding
+'UTF-8'
+-protected
+-source
+'11'
+--module-source-path
+'C:/Users/simo0/OneDrive/Documenti/NetBeansProjects/ClimateMonitoringLab/target/reports/apidocs/src'
+-author
+-bottom
+'Copyright &#169; 2024. All rights reserved.'
+-charset
+'UTF-8'
+-d
+'C:/Users/simo0/OneDrive/Documenti/NetBeansProjects/ClimateMonitoringLab/target/reports/apidocs'
+-docencoding
+'UTF-8'
+-doctitle
+'ClimateMonitoringLab 1.0-SNAPSHOT API'
+-linkoffline
+'https://docs.oracle.com/en/java/javase/11/docs/api' 'C:/Users/simo0/OneDrive/Documenti/NetBeansProjects/ClimateMonitoringLab/target/javadoc-bundle-options'
+-use
+-version
+-windowtitle
+'ClimateMonitoringLab 1.0-SNAPSHOT API'
+com.climatemonitoring.climatemonitoringlab
+'C:/Users/simo0/OneDrive/Documenti/NetBeansProjects/ClimateMonitoringLab/src/main/java/module-info.java'
+C:\Users\simo0\OneDrive\Documenti\NetBeansProjects\ClimateMonitoringLab\target\reports\apidocs\allclasses-index.html = 1725886772558
+C:\Users\simo0\OneDrive\Documenti\NetBeansProjects\ClimateMonitoringLab\target\reports\apidocs\allpackages-index.html = 1725886772563
+C:\Users\simo0\OneDrive\Documenti\NetBeansProjects\ClimateMonitoringLab\target\reports\apidocs\copy.svg = 1725886772687
+C:\Users\simo0\OneDrive\Documenti\NetBeansProjects\ClimateMonitoringLab\target\reports\apidocs\element-list = 1725886772004
+C:\Users\simo0\OneDrive\Documenti\NetBeansProjects\ClimateMonitoringLab\target\reports\apidocs\help-doc.html = 1725886772668
+C:\Users\simo0\OneDrive\Documenti\NetBeansProjects\ClimateMonitoringLab\target\reports\apidocs\index-all.html = 1725886772637
+C:\Users\simo0\OneDrive\Documenti\NetBeansProjects\ClimateMonitoringLab\target\reports\apidocs\index.html = 1725886772649
+C:\Users\simo0\OneDrive\Documenti\NetBeansProjects\ClimateMonitoringLab\target\reports\apidocs\jquery-ui.overrides.css = 1725886772750
+C:\Users\simo0\OneDrive\Documenti\NetBeansProjects\ClimateMonitoringLab\target\reports\apidocs\member-search-index.js = 1725886772573
+C:\Users\simo0\OneDrive\Documenti\NetBeansProjects\ClimateMonitoringLab\target\reports\apidocs\module-search-index.js = 1725886772566
+C:\Users\simo0\OneDrive\Documenti\NetBeansProjects\ClimateMonitoringLab\target\reports\apidocs\overview-tree.html = 1725886772502
+C:\Users\simo0\OneDrive\Documenti\NetBeansProjects\ClimateMonitoringLab\target\reports\apidocs\package-search-index.js = 1725886772569
+C:\Users\simo0\OneDrive\Documenti\NetBeansProjects\ClimateMonitoringLab\target\reports\apidocs\script.js = 1725886772684
+C:\Users\simo0\OneDrive\Documenti\NetBeansProjects\ClimateMonitoringLab\target\reports\apidocs\search-page.js = 1725886772701
+C:\Users\simo0\OneDrive\Documenti\NetBeansProjects\ClimateMonitoringLab\target\reports\apidocs\search.html = 1725886772643
+C:\Users\simo0\OneDrive\Documenti\NetBeansProjects\ClimateMonitoringLab\target\reports\apidocs\search.js = 1725886772697
+C:\Users\simo0\OneDrive\Documenti\NetBeansProjects\ClimateMonitoringLab\target\reports\apidocs\serialized-form.html = 1725886772290
+C:\Users\simo0\OneDrive\Documenti\NetBeansProjects\ClimateMonitoringLab\target\reports\apidocs\stylesheet.css = 1725886772678
+C:\Users\simo0\OneDrive\Documenti\NetBeansProjects\ClimateMonitoringLab\target\reports\apidocs\tag-search-index.js = 1725886772577
+C:\Users\simo0\OneDrive\Documenti\NetBeansProjects\ClimateMonitoringLab\target\reports\apidocs\type-search-index.js = 1725886772571
