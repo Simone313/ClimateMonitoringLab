@@ -1,15 +1,7 @@
 package com.climatemonitoring.climatemonitoringlab;
-//import java.io.File;
-//import java.io.FileWriter;
-import climatemonitoring.*;
 import java.io.IOException;
-import java.io.BufferedWriter;
 import java.io.Serializable;
-import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.LinkedList;
-import java.util.Date;
 /**
  * Le istanze della classe <em>Operatore</em> possono eseguire i metodi che consentono la registrazione dei centri di monitoraggio,
  * l'assegnazone dei parametri ad un'area specifica e di modificare i dati relativi al centro di monitoraggio a cui sono assegnate
@@ -23,26 +15,50 @@ public class Operatore implements Serializable{
     
     private static final long serialVersionUID = 1L;
 	/**
-	 * <p> l'attributo <code>nome</code> serve per indicare il nome proprio dell'operatore
-	 * <p> l'attributo <code>cognome</code> serve per indicare il cognome dell'operatore
-	 * <p> l'attributo <code>codiceFiscale</code> contiene il codice fiscale dell'operatore
-	 * <p> l'attributo <code>indirizzoPosta</code> indica l'indirizzo di posta elettronica dell'operatore
-	 * <p> l'attributo <code>userID</code> indica lo userID fornito all'operatore al momento della registrazione
-	 * <p> l'attributo <code>password</code> indica la password scelta dall'operatore al momento della registrazione
-	 * <p> l'attributo <code>cm</code> indica il centro di monitoraggio associato all'operatore
-	 * <p> l'attributo <code>cms</code> contiene cm.toString() e serve per effettuare l'operazione op.toString() quando cm vale null
-	 * <p> l'attributo <code>recuperoPassword</code> contiene la stringa che verrà utilizzata per effettuare il recupero della password dell'operatore
-	 */
-	private String nome;
-	private String cognome;
-	private String codiceFiscale;
-	private String indirizzoPosta;
-	private String userID;
-	private String password;
-	private CentroMonitoraggio cm;
-	private String cms; //Stringa che contiene cm.toString(); da utilizzare per evitare che il secondo costruttore dia errore
-	
-	private String recuperoPassword;
+        * <p> L'attributo <code>nome</code> serve per indicare il nome proprio dell'operatore.
+        */
+       private String nome;
+
+       /**
+        * <p> L'attributo <code>cognome</code> serve per indicare il cognome dell'operatore.
+        */
+       private String cognome;
+
+       /**
+        * <p> L'attributo <code>codiceFiscale</code> contiene il codice fiscale dell'operatore.
+        */
+       private String codiceFiscale;
+
+       /**
+        * <p> L'attributo <code>indirizzoPosta</code> indica l'indirizzo di posta elettronica dell'operatore.
+        */
+       private String indirizzoPosta;
+
+       /**
+        * <p> L'attributo <code>userID</code> indica lo <code>userID</code> fornito all'operatore al momento della registrazione.
+        */
+       private String userID;
+
+       /**
+        * <p> L'attributo <code>password</code> indica la password scelta dall'operatore al momento della registrazione.
+        */
+       private String password;
+
+       /**
+        * <p> L'attributo <code>cm</code> indica il centro di monitoraggio associato all'operatore.
+        */
+       private CentroMonitoraggio cm;
+
+       /**
+        * <p> L'attributo <code>cms</code> contiene la rappresentazione testuale del centro di monitoraggio (<code>cm.toString()</code>) e viene utilizzato per gestire i casi in cui <code>cm</code> è null.
+        */
+       private String cms;
+
+       /**
+        * <p> L'attributo <code>recuperoPassword</code> contiene la stringa utilizzata per il recupero della password dell'operatore.
+        */
+       private String recuperoPassword;
+
         
 	/**
 	 * Metodo che restituisce il nome dell'operatore
@@ -92,14 +108,14 @@ public class Operatore implements Serializable{
 
     /**
      * Costruttore della classe Operatore
-     * @param nome
-     * @param cognome
-     * @param codiceFiscale
-     * @param indirizzoPosta
-     * @param userID
-     * @param password
-     * @param cm
-     * @param recuperoPassword
+     * @param nome Nome
+     * @param cognome Cognome
+     * @param codiceFiscale Codice fiscale
+     * @param indirizzoPosta Indirizzo di posta elettronica
+     * @param userID userID
+     * @param password Password
+     * @param cm Centro di monitoraggio associato
+     * @param recuperoPassword Parola di recupero della password
      */
     public Operatore(String nome, String cognome, String codiceFiscale, String indirizzoPosta, String userID, String password, CentroMonitoraggio cm, String recuperoPassword) {
 		this.nome=nome;
@@ -113,9 +129,10 @@ public class Operatore implements Serializable{
 	}	
 	
 	/**
-	 * @param op indica l'oggetto operatore che deve essere registrato e inserito all'interno del file
-	 * @throws IOException se non viene trovato il file chiamato "OperatoriRegistrati.dati.txt"
-         * @throws java.sql.SQLException
+         * metodo che registra un operatore e lo inserisce all'interno del database
+	 * @param op indica l'oggetto operatore che deve essere registrato
+	 * @throws IOException IOException
+         * @throws java.sql.SQLException SQLException
 	 * */
 	public static void registrazione(Operatore op) throws IOException, SQLException {
             /*Connection conn= DriverManager.getConnection(url,user,psw);
@@ -131,11 +148,13 @@ public class Operatore implements Serializable{
 	
 	
 	/**
-	 * @param cm indica il centro di monitoraggio che deve essere registrato e inserito nel file
-	 * @throws IOException se non viene trovato il file chiamato "CentroMonitoraggio.dati.txt"
-         * @throws java.sql.SQLException
+         * metodo che registra un centro di monitoraggio e lo inserisce nel database
+	 * @param cm indica il centro di monitoraggio che deve essere registrato
+         * @param op Operatore che effettua la registrazione
+	 * @throws IOException IOException
+         * @throws java.sql.SQLException SQLException
 	 * */
-	public static void registraCentroAree(CentroMonitoraggio cm) throws IOException, SQLException {
+	public static void registraCentroAree(CentroMonitoraggio cm, Operatore op) throws IOException, SQLException {
 		//if(this.log==false) throw new OperatoreNonLoggatoException("Operatore non loggato");
 		/*Connection conn= DriverManager.getConnection(url,user,psw);
                 for(int i=0;i<cm.getAree().size();i++){
@@ -144,14 +163,14 @@ public class Operatore implements Serializable{
                     st.executeUpdate(stmt);
                 }*/
                 
-		ClientCM.registraCentroAree(cm);
+		ClientCM.registraCentroAree(cm, op);
 		
 	}
 	
 	
 	/**
-	 *
-	 * @return Stringa che raacchiude tutte le informazioni relative all'operatore
+	 * metodo toString della classe operatore
+	 * @return Stringa che racchiude tutte le informazioni relative all'operatore
 	 * 
 	 * */
 	public String toString() {
@@ -164,17 +183,18 @@ public class Operatore implements Serializable{
 	}
 	
 	/**
-        * @param area
-        * @param umidita
-	* @param vento, umidita, pressione, temperatura, precipitazioni, AlGhiacciai, MaGhiacciai e note sono parametri associti all'area
-        * @param note
-        * @param pressione
-        * @param temperatura
-        * @param AlGhiacciai
-        * @param precipitazioni
-        * @param MaGhiacciai
-        * @throws IOException se non viene trovato il file chiamato "ParametriClimatici.dati.txt"
-        * @throws java.sql.SQLException
+         * metodo per l'inserimento dei parametri climatici di un'area
+        * @param area nome dell'area
+        * @param umidita umidità
+	* @param vento vento
+        * @param note note dell'operatore
+        * @param pressione pressione
+        * @param temperatura temperatura
+        * @param AlGhiacciai altezza dei ghiacciai
+        * @param precipitazioni precipitazioni
+        * @param MaGhiacciai massa dei ghiacciai
+        * @throws IOException IOException
+        * @throws java.sql.SQLException SQLException
 	 * */
 	
 	public void inserisciParametriClimatici(String area,int vento, int umidita, int pressione, int temperatura, int precipitazioni, int AlGhiacciai, int MaGhiacciai, String note) throws IOException, SQLException {
@@ -186,7 +206,7 @@ public class Operatore implements Serializable{
                 ClientCM.inserisciParametriClimatici(area, this.getNomeCentroMonitoraggio(), vento, umidita, pressione, temperatura, precipitazioni, AlGhiacciai, MaGhiacciai, note);
 	}
 	/**
-	 * 
+	 * metodo che restituisce il centro di monitoraggio associato all'operatore
 	 * @return centro di monitoraggio dell'operatore
 	 */
 	public CentroMonitoraggio getCentroMonitoraggio() {
@@ -225,6 +245,7 @@ public class Operatore implements Serializable{
 	}
 	
 	/**
+         * metodo che restituisce l'area con i parametri assegnati
         * @param i Area alla quale devono essere assegnati i parametri 
         * @param ven vento
         * @param um umidità
@@ -234,7 +255,7 @@ public class Operatore implements Serializable{
         * @param alt altezza dei ghiacciai
         * @param mas massa dei ghiacciai
         * @param no  note
-	* @return Area con i paramteri assegnati
+	* @return Area area con i paramteri assegnati
 	* */
 	
 	public Area inserisciParametri(Area i,int ven, int um, int pres, int temp, int prec, int alt, int mas,String no) {

@@ -5,8 +5,6 @@
 package com.climatemonitoring.climatemonitoringlab;
 
 
-import climatemonitoring.*;
-import java.awt.BorderLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -31,16 +29,22 @@ import javax.swing.*;
  */
 public class FrameOperatore extends JFrame{
     /**
-     * <p> l'attributo <code>label</code> viene tuilizzato per mostrare a schermo una frase
-     * <p> l'attributo <code>accediBtn</code> è un button che se premuto crea un istanza della classe FrameAccessoOperatore
-     * <p> l'attributo <code>registratiBtn</code> è un button che se premuto crea un istanza della classe FrameRegistrazioneOperatore
-     * <p> l'attributo <code>frameRegistrazione</code> viene utilizzato per tenere traccia dell'istanza della classe FrameRegistrazioneOperatore che viene creata
-     * 
-     */
-    private static FrameRegistrazioneOperatore frameRegistrazione;
-    private JLabel label;
-    private JButton accediBtn;
-    private JButton registratiBtn;
+    * <p> L'attributo <code>label</code> viene utilizzato per mostrare a schermo una frase.
+    */
+   private JLabel label;
+   /**
+    * <p> L'attributo <code>accediBtn</code> è un JButton che, se premuto, crea un'istanza della classe <code>FrameAccessoOperatore</code>.
+    */
+   private JButton accediBtn;
+   /**
+    * <p> L'attributo <code>registratiBtn</code> è un JButton che, se premuto, crea un'istanza della classe <code>FrameRegistrazioneOperatore</code>.
+    */
+   private JButton registratiBtn;
+   /**
+    * <p> L'attributo <code>frameRegistrazione</code> viene utilizzato per tenere traccia dell'istanza della classe <code>FrameRegistrazioneOperatore</code> che viene creata.
+    */
+   private static FrameRegistrazioneOperatore frameRegistrazione;
+
 
     /**
      * Costruttore della classe FrameOperatore. Inizializza la finestra per 

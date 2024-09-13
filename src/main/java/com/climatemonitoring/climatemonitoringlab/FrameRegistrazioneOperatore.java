@@ -4,19 +4,9 @@
  */
 package com.climatemonitoring.climatemonitoringlab;
 
-/**
- * L'istanza della classe FrameRegistrazioneOperatore permette di inserire 
- * tutte le informazioni necessarie per la registrazione di un nuovo operatore
- * 
- * 
- * @author Simone Marino 
- * @author Andri Tosku
- * @author Mattia Statti
- * @author Defo Tagne Gabin Alban
- */
 
 
-import climatemonitoring.*;
+
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -25,11 +15,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.rmi.RemoteException;
-//import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.Arrays;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -44,59 +30,127 @@ import java.util.logging.Logger;
 import javax.swing.*;
 
 /**
- *
- * @author simo0
+ * L'istanza della classe FrameRegistrazioneOperatore permette di inserire 
+ * tutte le informazioni necessarie per la registrazione di un nuovo operatore
+ * 
+ * 
+ * @author Simone Marino 
+ * @author Andri Tosku
+ * @author Mattia Statti
+ * @author Defo Tagne Gabin Alban
  */
 public class FrameRegistrazioneOperatore extends JFrame{
     /**
-     * <p> l'attributo <code>isForRegistration</code> è un booleano che risulta true se l'apertura del frame menu è derivata da una registrazione 
-     * <p> l'attributo <code>nuovoCentroCreato</code> è un booleano che risulta true se durante la registrazione è stato creato un nuovo centro
-     * <p> l'attributo <code>nomejl</code> visualizza la scritta 'Nome:'
-     * <p> l'attributo <code>cognomejl</code> visualizza la scritta 'Cognome:'
-     * <p> l'attributo <code>passwordjl</code> visualizza la scritta 'Password:'
-     * <p> l'attributo <code>codicefiscalejl</code> visualizza la scritta 'Codice Fiscale:'
-     * <p> l'attributo <code>parolarecuperoPasswordjl</code> visualizza la scritta 'Parola Recupero Password:'
-     * <p> l'attributo <code>emailjl</code> visualizza la scritta 'Email:'
-     * <p> l'attributo <code>centromonitoraggiojl</code> visualizza la scritta 'Centro di monitoraggio associato:'
-     * <p> l'attributo <code>nome</code> permette di inserire il nome dell'operatore
-     * <p> l'attributo <code>cognome</code> permette di inserire il cognome dell'operatore
-     * <p> l'attributo <code>password</code> permette di inserire la password dell'operatore
-     * <p> l'attributo <code>codicefiscale</code> permette di inserire il codice fiscale dell'operatore
-     * <p> l'attributo <code>parolarecuperoPassword</code> permette di inserire la parola per il recupero della password dell'operatore
-     * <p> l'attributo <code>email</code> permette di inserire l'email dell'operatore
-     * <p> l'attributo <code>centromonitoraggio</code> permette di inserire il centro di monitoraggio da associare all'operatore
-     * <p> l'attributo <code>creaNuovoCentro</code> è un button che permette di creare un nuovo centro
-     * <p> l'attributo <code>invia</code> è un button che permette di confermare le informazioni fornite e proseguire con la registrazione
-     * <p> l'attributo <code>menu</code> viene tuilizzato per salvare l'istanza della classe FrameMenu che si va a creare al termine dell'operazione di registrazione
-     * <p> l'attributo <code>op</code> è l'oggetto di classe Operatore che viene istanziato al termina della registrazione
-     */
-    public static boolean isForRegistration=false;
+    * <p> L'attributo <code>registrazioneAvvenuta</code> è un booleano che risulta true se l'apertura del frame creaCentro è derivata da una registrazione.
+    */
+   public static boolean  registrazioneAvvenuta= false;
+    /**
+    * <p> L'attributo <code>isForRegistration</code> è un booleano che risulta true se l'apertura del frame menu è derivata da una registrazione.
+    */
+   public static boolean  isForRegistration= false;
 
-    private boolean nuovoCentroCreato=false;
-    private JLabel nomejl;
-    private JLabel cognomejl;
-    private JLabel passwordjl;
-    private JLabel codicefiscalejl;
-    private JLabel parolaRecuperoPasswordjl;
-    private JLabel emailjl;
-    private JLabel centromonitoraggiojl;
-    private JTextField nome;
-    private JTextField cognome;
-    private JPasswordField password;
-    private JTextField codicefiscale;
-    private JTextField parolaRecuperoPassword;
-    private JTextField email;
-    private JComboBox centromonitoraggio;
-    private JButton creaNuovoCentro;
-    private JButton invia;
-    private static FrameMenu menu;
-    
-    private static Operatore op;
+   /**
+    * <p> L'attributo <code>nuovoCentroCreato</code> è un booleano che risulta true se durante la registrazione è stato creato un nuovo centro.
+    */
+   private boolean nuovoCentroCreato = false;
+
+   /**
+    * <p> L'attributo <code>nomejl</code> visualizza la scritta 'Nome:'.
+    */
+   private JLabel nomejl;
+
+   /**
+    * <p> L'attributo <code>cognomejl</code> visualizza la scritta 'Cognome:'.
+    */
+   private JLabel cognomejl;
+
+   /**
+    * <p> L'attributo <code>passwordjl</code> visualizza la scritta 'Password:'.
+    */
+   private JLabel passwordjl;
+
+   /**
+    * <p> L'attributo <code>codicefiscalejl</code> visualizza la scritta 'Codice Fiscale:'.
+    */
+   private JLabel codicefiscalejl;
+
+   /**
+    * <p> L'attributo <code>parolaRecuperoPasswordjl</code> visualizza la scritta 'Parola Recupero Password:'.
+    */
+   private JLabel parolaRecuperoPasswordjl;
+
+   /**
+    * <p> L'attributo <code>emailjl</code> visualizza la scritta 'Email:'.
+    */
+   private JLabel emailjl;
+
+   /**
+    * <p> L'attributo <code>centromonitoraggiojl</code> visualizza la scritta 'Centro di monitoraggio associato:'.
+    */
+   private JLabel centromonitoraggiojl;
+
+   /**
+    * <p> L'attributo <code>nome</code> permette di inserire il nome dell'operatore.
+    */
+   private JTextField nome;
+
+   /**
+    * <p> L'attributo <code>cognome</code> permette di inserire il cognome dell'operatore.
+    */
+   private JTextField cognome;
+
+   /**
+    * <p> L'attributo <code>password</code> permette di inserire la password dell'operatore.
+    */
+   private JPasswordField password;
+
+   /**
+    * <p> L'attributo <code>codicefiscale</code> permette di inserire il codice fiscale dell'operatore.
+    */
+   private JTextField codicefiscale;
+
+   /**
+    * <p> L'attributo <code>parolaRecuperoPassword</code> permette di inserire la parola per il recupero della password dell'operatore.
+    */
+   private JTextField parolaRecuperoPassword;
+
+   /**
+    * <p> L'attributo <code>email</code> permette di inserire l'email dell'operatore.
+    */
+   private JTextField email;
+
+   /**
+    * <p> L'attributo <code>centromonitoraggio</code> permette di selezionare il centro di monitoraggio da associare all'operatore.
+    */
+   private JComboBox centromonitoraggio;
+
+   /**
+    * <p> L'attributo <code>creaNuovoCentro</code> è un JButton che permette di creare un nuovo centro.
+    */
+   private JButton creaNuovoCentro;
+
+   /**
+    * <p> L'attributo <code>invia</code> è un JButton che permette di confermare le informazioni fornite e proseguire con la registrazione.
+    */
+   private JButton invia;
+
+   /**
+    * <p> L'attributo <code>menu</code> viene utilizzato per salvare l'istanza della classe <code>FrameMenu</code> che si va a creare al termine dell'operazione di registrazione.
+    */
+   private static FrameMenu menu;
+
+   /**
+    * <p> L'attributo <code>op</code> è l'oggetto di classe <code>Operatore</code> che viene istanziato al termine della registrazione.
+    */
+   private static Operatore op;
+
 
     /**
-     *
-     * @throws SQLException
-     * @throws RemoteException
+     * Costruttore della classe FrameRegistrazioneOpeeratore. Innizializza la schermata
+     * per l'inserimento delle informazioni per effettuare la registrazione
+     * dell'operatore
+     * @throws SQLException SQLException
+     * @throws RemoteException RemoteException
      */
     public FrameRegistrazioneOperatore() throws SQLException, RemoteException{
         super("Registrazione");
@@ -129,7 +183,7 @@ public class FrameRegistrazioneOperatore extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 boolean registrazioneCorretta=true;
-                
+                isForRegistration=true;
                 
                 
                 
@@ -193,9 +247,7 @@ public class FrameRegistrazioneOperatore extends JFrame{
                             cm = new CentroMonitoraggio(elementoSelezionato[0], elementoSelezionato[1], ClientCM.toAreaList(elementoSelezionato));
 
                         }
-                        String url = "jdbc:postgresql://127.0.0.1:5432/postgres";
-                        String user = "postgres";
-                        String pass = "simone03";
+                        
         
                         /*Connection conn = DriverManager.getConnection(url, user, pass);
                         
@@ -241,7 +293,7 @@ public class FrameRegistrazioneOperatore extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 nuovoCentroCreato=true;
-                isForRegistration=true;
+                registrazioneAvvenuta=true;
                 new FrameCreaCentro();
                 setVisible(false);
             }
@@ -344,7 +396,12 @@ public class FrameRegistrazioneOperatore extends JFrame{
         
     }
     
-    
+    /**
+     * metodo che prende in ingresso  un array di caratteri e restituisce una stringa
+     * contenente gli elementi dell'array senza spazi e virgole
+     * @param c array di caratteri 
+     * @return stringa risultante
+     */
     private String arrayCharToString(char[] c){
         String ris= Arrays.toString(c);
         ris= ClientCM.rimuovi(ris, '[');
@@ -355,21 +412,26 @@ public class FrameRegistrazioneOperatore extends JFrame{
     }
     
     /**
-     *
-     * @return
+     * metodo che restituisce l'istanza della classe FrameMenu creata
+     * @return istanza della classe FrameMenu
      */
     public static FrameMenu getframeMenu(){
         return menu;
     }
     
     /**
-     *
-     * @return
+     * metodo che restituisce l'istanza di Operatore che viene creata 
+     * al termine dell'operazione di registrazione
+     * @return istanza di Operatore
      */
     public static Operatore getOperatore() {
         return op;
     }
-    
+    /**
+     * metodo che controlla se la stringa passata come parametro è un numero
+     * @param a stringa da controllare
+     * @return true se la stringa è un numero, false altrimenti
+     */
     private static boolean isNumero(String a) {
         int cont=0;
         a=a.toLowerCase();

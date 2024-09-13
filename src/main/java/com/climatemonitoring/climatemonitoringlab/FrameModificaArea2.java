@@ -4,17 +4,7 @@
  */
 package com.climatemonitoring.climatemonitoringlab;
 
-/**
- * L'istanza della classe FrameModificaArea2 permette all'utente di inserire 
- * le nuove informazioni da assegnare all'area selezionata
- * 
- * 
- * @author Simone Marino 
- * @author Andri Tosku
- * @author Mattia Statti
- * @author Defo Tagne Gabin Alban
- */
-import climatemonitoring.*;
+
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -30,20 +20,30 @@ import java.util.logging.Logger;
 import javax.swing.*;
 
 /**
- *
- * @author simo0
+ * L'istanza della classe FrameModificaArea2 permette all'utente di inserire 
+ * le nuove informazioni da assegnare all'area selezionata
+ * 
+ * 
+ * @author Simone Marino 
+ * @author Andri Tosku
+ * @author Mattia Statti
+ * @author Defo Tagne Gabin Alban
  */
 public class FrameModificaArea2 extends JFrame{
     /**
-     * <p> l'attributo <code>nomeAreaCercata</code> è una stringa che contiene il nome dell'area da modificare
-     * <p> l'attributo <code>invio</code> è un button utilizzato per confermare la modifica
-     */
-    private String nomeAreaCercata;
-    private JButton invio;
+    * <p> L'attributo <code>nomeAreaCercata</code> è una stringa che contiene il nome dell'area da modificare.
+    */
+   private String nomeAreaCercata;
+   /**
+    * <p> L'attributo <code>invio</code> è un button utilizzato per confermare la modifica.
+    */
+   private JButton invio;
+
 
     /**
-     *
-     * @param nome
+     * Costruttore della classe FrameModificaArea2. Innizializza la schermata
+     * per effettuare la modifica dell'area precedentemente selezionata.
+     * @param nome nome dell'area precedentemente selezionata
      */
     public FrameModificaArea2(String nome){
         super("Assegnamento parametri");
@@ -72,9 +72,10 @@ public class FrameModificaArea2 extends JFrame{
                 try {
                     Operatore op;
                     if(FrameRegistrazioneOperatore.isForRegistration){
-                        op=FrameAccessoOperatore.getOperatore();
-                    }else{
                         op=FrameRegistrazioneOperatore.getOperatore();
+                    }else{
+                        
+                        op=FrameAccessoOperatore.getOperatore();
                     }
                      
                     String nome=n.getText();

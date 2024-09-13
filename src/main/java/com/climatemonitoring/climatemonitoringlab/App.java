@@ -18,7 +18,7 @@ public class App extends Application {
     
     /**
      * Metodo start
-     * @param stage 
+     * @param stage parametro stage
      */
     @Override
     public void start(Stage stage) {

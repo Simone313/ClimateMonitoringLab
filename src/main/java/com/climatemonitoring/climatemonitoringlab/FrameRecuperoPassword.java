@@ -5,7 +5,6 @@
 package com.climatemonitoring.climatemonitoringlab;
 
 
-import climatemonitoring.*;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -27,13 +26,38 @@ import javax.swing.*;
  * @author Defo Tagne Gabin Alban
  */
 public class FrameRecuperoPassword extends JFrame{
+    /**
+     * <p> l'attributo <code>label</code> mostra la frase 'Inserisci la parola per il recupero della password'
+     * 
+     */
     private JLabel label;
+    /**
+     * <p> l'attributo <code>parolajl</code> mostra la frase 'Parola di recupero' a schermo
+     */
     private JLabel parolajl;
+    /**
+     * <p> l'attributo <code>parola</code> è un textField per acquisire la praola inserita
+     */
     private JTextField parola;
+    /**
+     * <p> l'attributo <code>invio</code> è un button per confermare l'inserimento
+     */
     private JButton invio;
+    /**
+     * <p> l'attributo <code>nomejl</code> mostra a schermo la frase 'Nome:'
+     */
     private JLabel nomejl;
+    /**
+     * <p> l'attributo <code>cognomejl</code> mostra a schermo la frase 'Cognome:'
+     */
     private JLabel cognomejl;
+    /**
+     * <p> l'attributo <code>nome</code> è un textField per acquisire il nome inserito
+     */
     private JTextField nome;
+    /**
+     * <p> l'attributo <code>cognome</code> è un textField per acquisire il cognome inserito
+     */
     private JTextField cognome;
 
     /**

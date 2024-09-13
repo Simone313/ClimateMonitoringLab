@@ -4,8 +4,6 @@
  */
 package com.climatemonitoring.climatemonitoringlab;
 
-import climatemonitoring.*;
-import java.awt.BorderLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -26,13 +24,18 @@ import javax.swing.*;
  */
 public class FrameProg extends JFrame{
     /**
-     * <p> l'attributo <code>label</code> viene tuilizzato per mostrare a schermo una frase
-     * <p> l'attributo <code>cittadinoBtn</code> è un button che se premuto crea un istanza della classe FrameCittadino
-     * <p> l'attributo <code>operatoreBtn</code> è un button che se premuto crea un istanza della classe FrameOperatore
-     */
-    private JLabel label;
-    private JButton cittadinoBtn;
-    private JButton operatoreBtn;
+    * <p> L'attributo <code>label</code> viene utilizzato per mostrare a schermo una frase.
+    */
+   private JLabel label;
+   /**
+    * <p> L'attributo <code>cittadinoBtn</code> è un JButton che, se premuto, crea un'istanza della classe <code>FrameCittadino</code>.
+    */
+   private JButton cittadinoBtn;
+   /**
+    * <p> L'attributo <code>operatoreBtn</code> è un JButton che, se premuto, crea un'istanza della classe <code>FrameOperatore</code>.
+    */
+   private JButton operatoreBtn;
+
 
     /**
      * Costruttore della classe FrameProg. Inizializza la finestra per scegliere

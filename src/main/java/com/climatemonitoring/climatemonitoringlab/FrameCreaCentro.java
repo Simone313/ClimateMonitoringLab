@@ -5,7 +5,6 @@
 package com.climatemonitoring.climatemonitoringlab;
 
 
-import climatemonitoring.*;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -31,61 +30,94 @@ import javax.swing.*;
  * @author Defo Tagne Gabin Alban
  */
 public class FrameCreaCentro extends JFrame{
-/**
- * 
- * 
- * <p> L'attributo <code>panel</code> contiene tutti gli elementi del frame.
- * <p> L'attributo <code>labelNome</code> visualizza la scritta 'Nome:' per l'inserimento del nome del centro.
- * <p> L'attributo <code>labelIndirizzo</code> visualizza la scritta 'Indirizzo:' per l'inserimento dell'indirizzo del centro.
- * <p> L'attributo <code>labelNomeArea</code> visualizza la scritta 'Nome luogo:' per l'inserimento del nome dell'area.
- * <p> L'attributo <code>labelLatitudine</code> visualizza la scritta 'Latitudine:' per l'inserimento della latitudine dell'area.
- * <p> L'attributo <code>labelLongitudine</code> visualizza la scritta 'Longitudine:' per l'inserimento della longitudine dell'area.
- * <p> L'attributo <code>label</code> visualizza la scritta 'Inserimento aree:' per la sezione di inserimento delle aree.
- * 
- * <p> L'attributo <code>nome</code> è un campo di testo (JTextField) per l'inserimento del nome del centro di monitoraggio.
- * <p> L'attributo <code>indirizzo</code> è un campo di testo per l'inserimento dell'indirizzo del centro di monitoraggio.
- * <p> L'attributo <code>nomeArea</code> è un campo di testo per l'inserimento del nome dell'area geografica.
- * <p> L'attributo <code>latitudine</code> è un campo di testo per l'inserimento della latitudine dell'area geografica.
- * <p> L'attributo <code>longitudine</code> è un campo di testo per l'inserimento della longitudine dell'area geografica.
- * 
- * <p> L'attributo <code>preNomeArea</code> punta all'ultimo campo di testo relativo al nome dell'area inserito
- * (inizialmente preNomeArea e nomeArea puntano allo stesso oggetto).
- * <p> L'attributo <code>preLatitudine</code> punta all'ultimo campo di testo relativo alla latitudine inserita
- * (inizialmente preLatitudine e latitudine puntano allo stesso oggetto).
- * <p> L'attributo <code>preLongitudine</code> punta all'ultimo campo di testo relativo alla longitudine inserita
- * (inizialmente preLongitudine e longitudine puntano allo stesso oggetto).
- * 
- * <p> L'attributo <code>aggiungiArea</code> è un pulsante (JButton) che consente di aggiungere
- * ulteriori campi di testo per l'inserimento di altre aree.
- * <p> L'attributo <code>invio</code> è un pulsante che conferma le informazioni inserite e procede con la creazione del centro.
- * <p> L'attributo <code>indietro</code> è un pulsante che permette di tornare alla schermata precedente.
- * 
- * <p> L'attributo <code>count</code> è un contatore intero che tiene traccia del numero di aree aggiuntive inserite.
- * <p> L'attributo <code>listaAree</code> è una lista (LinkedList) che contiene tutte le aree inserite.
- */
-private JPanel panel;
-private JLabel labelNome;
-private JLabel labelIndirizzo;
-private JLabel labelNomeArea;
-private JLabel labelLatitudine;
-private JLabel labelLongitudine;
-private JLabel label;
+    /**
+     * <p> L'attributo <code>panel</code> contiene tutti gli elementi del frame.
+     */
+    private JPanel panel;
+    /**
+     * <p> L'attributo <code>labelNome</code> visualizza la scritta 'Nome:' per l'inserimento del nome del centro.
+     */
+    private JLabel labelNome;
+    /**
+     * <p> L'attributo <code>labelIndirizzo</code> visualizza la scritta 'Indirizzo:' per l'inserimento dell'indirizzo del centro.
+     */
+    private JLabel labelIndirizzo;
+    /**
+     * <p> L'attributo <code>labelNomeArea</code> visualizza la scritta 'Nome luogo:' per l'inserimento del nome dell'area.
+     */
+    private JLabel labelNomeArea;
+    /**
+     * <p> L'attributo <code>labelLatitudine</code> visualizza la scritta 'Latitudine:' per l'inserimento della latitudine dell'area.
+     */
+    private JLabel labelLatitudine;
+    /**
+     * <p> L'attributo <code>labelLongitudine</code> visualizza la scritta 'Longitudine:' per l'inserimento della longitudine dell'area.
+     */
+    private JLabel labelLongitudine;
+    /**
+     * <p> L'attributo <code>label</code> visualizza la scritta 'Inserimento aree:' per la sezione di inserimento delle aree.
+     */
+    private JLabel label;
 
-private JTextField nome;
-private JTextField indirizzo;
-private JTextField nomeArea;
-private JTextField latitudine;
-private JTextField longitudine;
-private JTextField preNomeArea;
-private JTextField preLatitudine;
-private JTextField preLongitudine;
+    /**
+     * <p> L'attributo <code>nome</code> è un campo di testo (JTextField) per l'inserimento del nome del centro di monitoraggio.
+     */
+    private JTextField nome;
+    /**
+     * <p> L'attributo <code>indirizzo</code> è un campo di testo per l'inserimento dell'indirizzo del centro di monitoraggio.
+     */
+    private JTextField indirizzo;
+    /**
+     * <p> L'attributo <code>nomeArea</code> è un campo di testo per l'inserimento del nome dell'area geografica.
+     */
+    private JTextField nomeArea;
+    /**
+     * <p> L'attributo <code>latitudine</code> è un campo di testo per l'inserimento della latitudine dell'area geografica.
+     */
+    private JTextField latitudine;
+    /**
+     * <p> L'attributo <code>longitudine</code> è un campo di testo per l'inserimento della longitudine dell'area geografica.
+     */
+    private JTextField longitudine;
+    /**
+     * <p> L'attributo <code>preNomeArea</code> punta all'ultimo campo di testo relativo al nome dell'area inserito
+     * (inizialmente preNomeArea e nomeArea puntano allo stesso oggetto).
+     */
+    private JTextField preNomeArea;
+    /**
+     * <p> L'attributo <code>preLatitudine</code> punta all'ultimo campo di testo relativo alla latitudine inserita
+     * (inizialmente preLatitudine e latitudine puntano allo stesso oggetto).
+     */
+    private JTextField preLatitudine;
+    /**
+     * <p> L'attributo <code>preLongitudine</code> punta all'ultimo campo di testo relativo alla longitudine inserita
+     * (inizialmente preLongitudine e longitudine puntano allo stesso oggetto).
+     */
+    private JTextField preLongitudine;
 
-private JButton aggiungiArea;
-private JButton invio;
-private JButton indietro;
+    /**
+     * <p> L'attributo <code>aggiungiArea</code> è un pulsante (JButton) che consente di aggiungere
+     * ulteriori campi di testo per l'inserimento di altre aree.
+     */
+    private JButton aggiungiArea;
+    /**
+     * <p> L'attributo <code>invio</code> è un pulsante che conferma le informazioni inserite e procede con la creazione del centro.
+     */
+    private JButton invio;
+    /**
+     * <p> L'attributo <code>indietro</code> è un pulsante che permette di tornare alla schermata precedente.
+     */
+    private JButton indietro;
 
-private int count = 0;
-private LinkedList<Area> listaAree;
+    /**
+     * <p> L'attributo <code>count</code> è un contatore intero che tiene traccia del numero di aree aggiuntive inserite.
+     */
+    private int count = 0;
+    /**
+     * <p> L'attributo <code>listaAree</code> è una lista (LinkedList) che contiene tutte le aree inserite.
+     */
+    private LinkedList<Area> listaAree;
+
 /**
  *  memorizza l'istanza della classe CentroMonitoraggio creata alla fine dell'operazione.
  */
@@ -206,7 +238,13 @@ private static CentroMonitoraggio cm;
 
                                 try {
                                     cm= new CentroMonitoraggio(nome.getText(),indirizzo.getText(),listaAree);
-                                    Operatore.registraCentroAree(cm);
+                                    Operatore op;
+                                    if(FrameRegistrazioneOperatore.isForRegistration){
+                                        op=FrameRegistrazioneOperatore.getOperatore();
+                                    }else{
+                                        op=FrameAccessoOperatore.getOperatore();
+                                    }
+                                    Operatore.registraCentroAree(cm,op);
 
                                 } catch (IOException ex) {
                                     Logger.getLogger(FrameCreaCentro.class.getName()).log(Level.SEVERE, null, ex);
@@ -305,7 +343,7 @@ private static CentroMonitoraggio cm;
     * e naviga alla schermata corrispondente.
     */
     private void ind(){
-        if(FrameRegistrazioneOperatore.isForRegistration){
+        if(FrameRegistrazioneOperatore.registrazioneAvvenuta){
             tornaAllaRegistrazione();
         }else{
             tornaAlMenu();

@@ -5,7 +5,6 @@
 package com.climatemonitoring.climatemonitoringlab;
 
 
-import climatemonitoring.*;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -38,47 +37,62 @@ import javax.swing.*;
  */
 public class FrameAccessoOperatore extends JFrame {
     /**
-     * <p>l'attributo <code>accedi</code> mostra la scritta 'Inserisci le credenziali'
-     * l'attributo <code>nomejl</code> mostra la scritta 'Nome: '
-     * l'attributo <code>cognomejl</code> mostra la scritta 'Cognome: '
-     * l'attributo <code>passwordjl</code> mostra la scritta 'Password: '
-     * 
-     * l'attributo <code>nome</code> è un textField utilizzato per l'inserimento del nome
-     * l'attributo <code>cognome</code> è un textField utilizzato per l'inserimento del cognome
-     * l'attributo <code>psw</code> è un passwordField utilizzato per l'inserimento della password
-     * 
-     * l'attributo <code>accesso</code> è un booleano che risulta true se l'apertura del frame menu è avvenuta a seguito di un accesso
-     * l'attributo <code>menu</code> tiene traccia dell'istanza di FrameMenu che si viene a creare
-     * l'attributo <code>nom</code> è una stringa dentro la quale viene salvato il nome dell'operatore
-     * l'attributo <code>con</code> è una stringa dentro la quale viene salvato il cognome dell'operatore
-     * l'attributo <code>pass</code> è una stringa dentro la quale viene salvata la password dell'operatore
-     */
-    private JLabel accedi;
-    private JLabel nomejl;
-    private JLabel cognomejl;
-    private JLabel passwordjl;
-    private JTextField nome;
-    private JTextField cognome;
-    private JPasswordField psw;
-    private JButton invia;
-    private static boolean accesso= false;
-    private static FrameMenu menu;
-    
-    /**
-     * nome dell'operatore
-     */
-    public static String nom;
+    * <p> l'attributo <code>accedi</code> mostra la scritta 'Inserisci le credenziali'.
+    */
+   private JLabel accedi;
+   /**
+    * <p> l'attributo <code>nomejl</code> mostra la scritta 'Nome: '.
+    */
+   private JLabel nomejl;
+   /**
+    * <p> l'attributo <code>cognomejl</code> mostra la scritta 'Cognome: '.
+    */
+   private JLabel cognomejl;
+   /**
+    * <p> l'attributo <code>passwordjl</code> mostra la scritta 'Password: '.
+    */
+   private JLabel passwordjl;
+   /**
+    * <p> l'attributo <code>nome</code> è un textField utilizzato per l'inserimento del nome.
+    */
+   private JTextField nome;
+   /**
+    * <p> l'attributo <code>cognome</code> è un textField utilizzato per l'inserimento del cognome.
+    */
+   private JTextField cognome;
+   /**
+    * <p> l'attributo <code>psw</code> è un passwordField utilizzato per l'inserimento della password.
+    */
+   private JPasswordField psw;
+   /**
+    * <p> l'attributo <code>invia</code> è un pulsante utilizzato per inviare i dati.
+    */
+   private JButton invia;
+   /**
+    * <p> l'attributo <code>accesso</code> è un booleano che risulta true se l'apertura del frame menu è avvenuta a seguito di un accesso.
+    */
+   private static boolean accesso = false;
+   /**
+    * <p> l'attributo <code>menu</code> tiene traccia dell'istanza di FrameMenu che si viene a creare.
+    */
+   private static FrameMenu menu;
+   /**
+    * <p> l'attributo <code>nom</code> è una stringa dentro la quale viene salvato il nome dell'operatore.
+    */
+   public static String nom;
+   /**
+    * <p> l'attributo <code>con</code> è una stringa dentro la quale viene salvato il cognome dell'operatore.
+    */
+   public static String con;
+   /**
+    * <p> l'attributo <code>pass</code> è una stringa dentro la quale viene salvata la password dell'operatore.
+    */
+   public static String pass;
+   /**
+    * <p> l'attributo <code>count</code> è un contatore utilizzato per gestire le operazioni.
+    */
+   private static int count;
 
-    /**
-     * cognome dell'operatore
-     */
-    public static String con;
-
-    /**
-     * password dell'operatore
-     */
-    public static String pass;
-    private static int count;
 
     /**
     * Costruttore della classe FrameAccessoOperatore. Inizializza la finestra per l'accesso 
@@ -182,7 +196,12 @@ public class FrameAccessoOperatore extends JFrame {
         
         setVisible(true);
     }
-    
+    /**
+     * metodo che prende un array di caratteri e lo restituisce come stringa senza
+     * parentesi quadre e virgole
+     * @param c array di caratteri
+     * @return stringa risultante
+     */
     private String arrayCharToString(char[] c){
         String ris= Arrays.toString(c);
         ris= ClientCM.rimuovi(ris, '[');
@@ -194,26 +213,26 @@ public class FrameAccessoOperatore extends JFrame {
     //metodo che serve per capire se si è arrivati al menu tramite una registrazione o un accesso
 
     /**
-     *
-     * @return restituisce un booleano che specifica se è avvenuto l'accesso
+     *  metodo che restituisce un booleano che specifica se è avvenuto l'accesso
+     * @return booleano che specifica se è avvenuto l'accesso
      */
     public static boolean accessoAvvenuto(){
         return accesso;
     }
     
     /**
-     *
-     * @return restituisce l'istanza della classe FrameMenu
+     * metodo che restituisce l'istanza della classe FrameMenu
+     * @return istanza della classe FrameMenu
      */
     public static FrameMenu getframeMenu(){
         return menu;
     }
     
     /**
-     *
-     * @return restituisce l'operatore 
-     * @throws SQLException
-     * @throws RemoteException
+     * metodo che restituisce l'oggetto operatore 
+     * @return oggetto operatore 
+     * @throws SQLException SQLException
+     * @throws RemoteException RemoteException
      */
     public static Operatore getOperatore() throws SQLException, RemoteException{
         return ClientCM.getOperatore(nom, con, pass);

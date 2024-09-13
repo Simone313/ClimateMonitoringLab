@@ -4,7 +4,6 @@
  */
 package com.climatemonitoring.climatemonitoringlab;
 
-import climatemonitoring.*;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -29,23 +28,39 @@ import javax.swing.*;
 
 public class FrameModificaCentro extends JFrame {
     /**
-     * <p> l'attributo <code>label</code> viene utilizzato per mostrare una frase
-     * <p> l'attributo <code>modificaNome</code> indica l'opzione per la modifica del nome del centro
-     * <p> l'attributo <code>modificaIndirizzo</code> indica l'opzione per la modifica dell'indirizzo del centro
-     * <p> l'attributo <code>modificaAree</code> indica l'opzione per la modifica delle aree del centro
-     * <p> l'attributo <code>gruppo</code> raggruppa gli attributi <code>modificaNome</code>, <code>modificaIndirizzo</code>, <code>modificaAree</code> che sono utilizzati per selezionare quale modifica apportare
-     * <p> l'attributo <code>invio</code> è un button utilizzato per confermare la scelta
-     * <p> l'attributo <code>indietro</code> è un button utilizzato per tornare alla schermata precedente
-     * <p> l'attributo <code>select</code> serve per indicare quale opzione è stata scelta
-     */
-    private JLabel label;
-    private JRadioButton modificaNome;
-    private JRadioButton modificaIndirizzo;
-    private JRadioButton modificaAree;
-    private ButtonGroup gruppo;
-    private JButton invio;
-    private JButton indietro;
-    private int select=0;
+    * <p> L'attributo <code>label</code> viene utilizzato per mostrare una frase.
+    */
+   private JLabel label;
+   /**
+    * <p> L'attributo <code>modificaNome</code> indica l'opzione per la modifica del nome del centro.
+    */
+   private JRadioButton modificaNome;
+   /**
+    * <p> L'attributo <code>modificaIndirizzo</code> indica l'opzione per la modifica dell'indirizzo del centro.
+    */
+   private JRadioButton modificaIndirizzo;
+   /**
+    * <p> L'attributo <code>modificaAree</code> indica l'opzione per la modifica delle aree del centro.
+    */
+   private JRadioButton modificaAree;
+   /**
+    * <p> L'attributo <code>gruppo</code> raggruppa gli attributi <code>modificaNome</code>, 
+    * <code>modificaIndirizzo</code>, <code>modificaAree</code> che sono utilizzati per selezionare quale modifica apportare.
+    */
+   private ButtonGroup gruppo;
+   /**
+    * <p> L'attributo <code>invio</code> è un button utilizzato per confermare la scelta.
+    */
+   private JButton invio;
+   /**
+    * <p> L'attributo <code>indietro</code> è un button utilizzato per tornare alla schermata precedente.
+    */
+   private JButton indietro;
+   /**
+    * <p> L'attributo <code>select</code> serve per indicare quale opzione è stata scelta.
+    */
+   private int select = 0;
+
 
     /**
      * Costruttore della classe FrameModificaCentro. Inizializza  la finestra 

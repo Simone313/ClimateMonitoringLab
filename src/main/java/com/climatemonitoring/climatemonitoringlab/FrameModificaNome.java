@@ -5,7 +5,6 @@
 package com.climatemonitoring.climatemonitoringlab;
 
 
-import climatemonitoring.*;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -30,13 +29,18 @@ import javax.swing.*;
  */
 public class FrameModificaNome extends JFrame{
     /**
-     * <p> l'attributo <code>label</code> viene utilizzato per mostrare una frase
-     * <p> l'attributo <code>nuovoNome</code> è un TextField utilizzato per far inserire il nuovo nome del centro
-     * <p> l'attributo <code>invio</code> è un button utilizzato per confermare la modifica
-     */
-    private JLabel label;
-    private JTextField nuovoNome;
-    private JButton invio;
+    * <p> L'attributo <code>label</code> viene utilizzato per mostrare una frase.
+    */
+   private JLabel label;
+   /**
+    * <p> L'attributo <code>nuovoNome</code> è un JTextField utilizzato per far inserire il nuovo nome del centro.
+    */
+   private JTextField nuovoNome;
+   /**
+    * <p> L'attributo <code>invio</code> è un JButton utilizzato per confermare la modifica.
+    */
+   private JButton invio;
+
 
     /**
      * Costruttore della classe FrameModificaNome. Inizializza la finestra per 
@@ -59,9 +63,9 @@ public class FrameModificaNome extends JFrame{
             public void actionPerformed(ActionEvent e) {
                 try {
                     if(FrameRegistrazioneOperatore.isForRegistration){
-                        ClientCM.modificaNomeCentro(FrameAccessoOperatore.getOperatore(), nuovoNome.getText());
-                    }else{
                         ClientCM.modificaNomeCentro(FrameRegistrazioneOperatore.getOperatore(), nuovoNome.getText());
+                    }else{
+                        ClientCM.modificaNomeCentro(FrameAccessoOperatore.getOperatore(), nuovoNome.getText());
                     }
                 } catch (SQLException ex) {
                     Logger.getLogger(FrameModificaNome.class.getName()).log(Level.SEVERE, null, ex);

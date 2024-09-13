@@ -4,17 +4,7 @@
  */
 package com.climatemonitoring.climatemonitoringlab;
 
-/**
- * L'istanza della classe FrameModificaArea permette all'utente di selezioanre 
- * quale area si desidera modificare
- * 
- * 
- * @author Simone Marino 
- * @author Andri Tosku
- * @author Mattia Statti
- * @author Defo Tagne Gabin Alban
- */
-import climatemonitoring.*;
+
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -33,26 +23,39 @@ import java.util.logging.Logger;
 import javax.swing.*;
 
 /**
- *
- * @author simo0
+ * L'istanza della classe FrameModificaArea permette all'utente di selezioanre 
+ * quale area si desidera modificare
+ * 
+ * 
+ * @author Simone Marino 
+ * @author Andri Tosku
+ * @author Mattia Statti
+ * @author Defo Tagne Gabin Alban
  */
 public class FrameModificaArea extends JFrame{
     /**
-     * <p> l'attributo <code>label</code> mostra una frase
-     * <p> l'attributo <code>gruppo</code> raggruppa tutte la aree del centro che possono essere selezionate
-     * <p> l'attributo <code>select</code> è una stringa che contiene il nome dell'area selezionata
-     * <p> l'attributo <code>invio</code> è un button utilizzato per confermare la scelta
-     * 
-     */
-    private JLabel label;
-    private ButtonGroup gruppo;
-    private String select;
-    private JButton invio;
+    * <p> L'attributo <code>label</code> mostra una frase.
+    */
+   private JLabel label;
+   /**
+    * <p> L'attributo <code>gruppo</code> raggruppa tutte le aree del centro che possono essere selezionate.
+    */
+   private ButtonGroup gruppo;
+   /**
+    * <p> L'attributo <code>select</code> è una stringa che contiene il nome dell'area selezionata.
+    */
+   private String select;
+   /**
+    * <p> L'attributo <code>invio</code> è un button utilizzato per confermare la scelta.
+    */
+   private JButton invio;
+
 
     /**
-     *
-     * @throws SQLException
-     * @throws RemoteException
+     * Costruttore della classe FrameModificaArea. Innizializza la schermata
+     * per la selezione dell'area da modificare.
+     * @throws SQLException SQLException
+     * @throws RemoteException RemoteException
      */
     public FrameModificaArea() throws SQLException, RemoteException{
         super("Modifica area");
@@ -90,7 +93,7 @@ public class FrameModificaArea extends JFrame{
         LinkedList<String> luoghi= ClientCM.getListaNomiCentromonitoraggio();
         
         for(int i=1;i<=luoghi.size();i++){
-            JRadioButton btn= new JRadioButton(luoghi.get(i+1));
+            JRadioButton btn= new JRadioButton(luoghi.get(i-1));
             gruppo.add(btn);
             
             gbc.gridx=i;

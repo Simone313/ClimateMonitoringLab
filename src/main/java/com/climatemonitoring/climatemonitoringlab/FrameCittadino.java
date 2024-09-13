@@ -5,7 +5,6 @@
 package com.climatemonitoring.climatemonitoringlab;
 
 
-import climatemonitoring.*;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -30,17 +29,26 @@ import javax.swing.*;
  */
 public class FrameCittadino extends JFrame{
     /**
-     * <p> l'attributo <code>label</code> visualizza la scritta 'cerca luogo'
-     * <p> l'attributo <code>cerca</code> è un textField nel quale va inserito il nome dell'luogo da cercare
-     * <p> l'attributo <code>invio</code> è un button che avvia la ricerca
-     * <p> l'attributo <code>panel</code> contiene tutti gli elementi elencati
-     * 
-     */
-    private JLabel label;
-    private JTextField cerca;
-    private JButton invio;
-    private JTextArea risposta;
-    private JPanel panel;
+    * <p> l'attributo <code>label</code> visualizza la scritta 'cerca luogo'.
+    */
+   private JLabel label;
+   /**
+    * <p> l'attributo <code>cerca</code> è un textField nel quale va inserito il nome del luogo da cercare.
+    */
+   private JTextField cerca;
+   /**
+    * <p> l'attributo <code>invio</code> è un button che avvia la ricerca.
+    */
+   private JButton invio;
+   /**
+    * <p> l'attributo <code>risposta</code> visualizza il risultato della ricerca.
+    */
+   private JTextArea risposta;
+   /**
+    * <p> l'attributo <code>panel</code> contiene tutti gli elementi elencati.
+    */
+   private JPanel panel;
+
 
     /**
     * Crea un'istanza della finestra di monitoraggio climatico per permettere agli utenti di cercare

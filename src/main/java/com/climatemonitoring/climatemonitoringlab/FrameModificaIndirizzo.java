@@ -4,7 +4,6 @@
  */
 package com.climatemonitoring.climatemonitoringlab;
 
-import climatemonitoring.*;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -29,13 +28,18 @@ import javax.swing.*;
  */
 public class FrameModificaIndirizzo extends JFrame {
     /**
-     * <p> l'attributo <code>label</code> viene utilizzato per mostrare una frase
-     * <p> l'attributo <code>nuovoIndirizzo</code> è un TextField utilizzato per far inserire il nuovo indirizzo del centro
-     * <p> l'attributo <code>invio</code> è un button utilizzato per confermare la modifica
-     */
-    private JLabel label;
-    private JTextField nuovoIndirizzo;
-    private JButton invio;
+    * <p> L'attributo <code>label</code> viene utilizzato per mostrare una frase.
+    */
+   private JLabel label;
+   /**
+    * <p> L'attributo <code>nuovoIndirizzo</code> è un JTextField utilizzato per far inserire il nuovo indirizzo del centro.
+    */
+   private JTextField nuovoIndirizzo;
+   /**
+    * <p> L'attributo <code>invio</code> è un JButton utilizzato per confermare la modifica.
+    */
+   private JButton invio;
+
 
     /**
      * Costruttore della classe FrameModificaIndirizzo. Inizializza la finestra
@@ -58,9 +62,9 @@ public class FrameModificaIndirizzo extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 try {
                     if(FrameRegistrazioneOperatore.isForRegistration){
-                        ClientCM.modificaIndirizzoCentro(FrameAccessoOperatore.getOperatore(), nuovoIndirizzo.getText());
-                    }else{
                         ClientCM.modificaIndirizzoCentro(FrameRegistrazioneOperatore.getOperatore(), nuovoIndirizzo.getText());
+                    }else{
+                        ClientCM.modificaIndirizzoCentro(FrameAccessoOperatore.getOperatore(), nuovoIndirizzo.getText());
                     }                } catch (SQLException ex) {
                     Logger.getLogger(FrameModificaNome.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (RemoteException ex) {

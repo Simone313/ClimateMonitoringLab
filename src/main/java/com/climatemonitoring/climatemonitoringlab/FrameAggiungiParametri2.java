@@ -4,17 +4,7 @@
  */
 package com.climatemonitoring.climatemonitoringlab;
 
-/**
- *
- * L'istanza della classe FrameAggiungiiParametri2 viene utilizzata per 
- * permettere all'utente di inserire i parametri desiderati per l'area selezionata
- * 
- * @author Simone Marino 
- * @author Andri Tosku
- * @author Mattia Statti
- * @author Defo Tagne Gabin Alban
- */
-import climatemonitoring.*;
+
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -29,53 +19,91 @@ import javax.swing.*;
 
 /**
  *
- * @author simo0
+ * L'istanza della classe FrameAggiungiiParametri2 viene utilizzata per 
+ * permettere all'utente di inserire i parametri desiderati per l'area selezionata
+ * 
+ * @author Simone Marino 
+ * @author Andri Tosku
+ * @author Mattia Statti
+ * @author Defo Tagne Gabin Alban
  */
 public class FrameAggiungiParametri2 extends JFrame{
     /**
-     * <p> l'attributo <code>ventoLabel</code> visualizza la scritta 'Vento: '
-     * <p> l'attributo <code>umiditaLabel</code> visualizza la scritta 'Umidita: '
-     * <p> l'attributo <code>pressioneLabel</code> visualizza la scritta 'Pressione: '
-     * <p> l'attributo <code>temperaturaLabel</code> visualizza la scritta 'Temperatura: '
-     * <p> l'attributo <code>precipitazioniLabel</code> visualizza la scritta 'Precipitazioni: '
-     * <p> l'attributo <code>altGhiLabel</code> visualizza la scritta 'Altezza dei ghiacciai: '
-     * <p> l'attributo <code>masGhiLabel</code> visualizza la scritta 'MAssa dei ghiacciai: '
-     * <p> l'attributo <code>noteLabel</code> visualizza la scritta 'Note: '
-     * 
-     * <p> l'attributo <code>vento</code> permette di selezionare il parametro da assegnare al vento
-     * <p> l'attributo <code>umidita</code> permette di selezionare il parametro da assegnare all'umidita
-     * <p> l'attributo <code>pressione</code> permette di selezionare il parametro da assegnare alla pressione
-     * <p> l'attributo <code>temperatura</code> permette di selezionare il parametro da assegnare alla temperatura
-     * <p> l'attributo <code>precipitazioni</code> permette di selezionare il parametro da assegnare alle precipitazioni
-     * <p> l'attributo <code>altGhi</code> permette di selezionare il parametro da assegnare all'altezza dei ghiacciai
-     * <p> l'attributo <code>masGhi</code> permette di selezionare il parametro da assegnare alla massa dei ghiacciai
-     * <p> l'attributo <code>note</code> permette di inserire una spiegazione più dettagliata sui parametri inseriti
-     * 
-     * <p> l'attributo <code>invio</code> è un button per confermare gli inserimenti effettuati
-     */
-    private JLabel ventoLabel;
-    private JLabel umiditaLabel;
-    private JLabel pressioneLabel;
-    private JLabel temperaturaLabel;
-    private JLabel precipitazioniLabel;
-    private JLabel altGhiLabel;
-    private JLabel masGhiLabel;
-    private JLabel noteLabel;
-    
-    private JComboBox vento;
-    private JComboBox umidita;
-    private JComboBox pressione;
-    private JComboBox temperatura;
-    private JComboBox precipitazioni;
-    private JComboBox altGhi;
-    private JComboBox masGhi;
-    private JTextArea note;
-    
-    private JButton invio;
+    * <p> l'attributo <code>ventoLabel</code> visualizza la scritta 'Vento: '.
+    */
+   private JLabel ventoLabel;
+   /**
+    * <p> l'attributo <code>umiditaLabel</code> visualizza la scritta 'Umidita: '.
+    */
+   private JLabel umiditaLabel;
+   /**
+    * <p> l'attributo <code>pressioneLabel</code> visualizza la scritta 'Pressione: '.
+    */
+   private JLabel pressioneLabel;
+   /**
+    * <p> l'attributo <code>temperaturaLabel</code> visualizza la scritta 'Temperatura: '.
+    */
+   private JLabel temperaturaLabel;
+   /**
+    * <p> l'attributo <code>precipitazioniLabel</code> visualizza la scritta 'Precipitazioni: '.
+    */
+   private JLabel precipitazioniLabel;
+   /**
+    * <p> l'attributo <code>altGhiLabel</code> visualizza la scritta 'Altezza dei ghiacciai: '.
+    */
+   private JLabel altGhiLabel;
+   /**
+    * <p> l'attributo <code>masGhiLabel</code> visualizza la scritta 'Massa dei ghiacciai: '.
+    */
+   private JLabel masGhiLabel;
+   /**
+    * <p> l'attributo <code>noteLabel</code> visualizza la scritta 'Note: '.
+    */
+   private JLabel noteLabel;
+
+   /**
+    * <p> l'attributo <code>vento</code> permette di selezionare il parametro da assegnare al vento.
+    */
+   private JComboBox vento;
+   /**
+    * <p> l'attributo <code>umidita</code> permette di selezionare il parametro da assegnare all'umidità.
+    */
+   private JComboBox umidita;
+   /**
+    * <p> l'attributo <code>pressione</code> permette di selezionare il parametro da assegnare alla pressione.
+    */
+   private JComboBox pressione;
+   /**
+    * <p> l'attributo <code>temperatura</code> permette di selezionare il parametro da assegnare alla temperatura.
+    */
+   private JComboBox temperatura;
+   /**
+    * <p> l'attributo <code>precipitazioni</code> permette di selezionare il parametro da assegnare alle precipitazioni.
+    */
+   private JComboBox precipitazioni;
+   /**
+    * <p> l'attributo <code>altGhi</code> permette di selezionare il parametro da assegnare all'altezza dei ghiacciai.
+    */
+   private JComboBox altGhi;
+   /**
+    * <p> l'attributo <code>masGhi</code> permette di selezionare il parametro da assegnare alla massa dei ghiacciai.
+    */
+   private JComboBox masGhi;
+   /**
+    * <p> l'attributo <code>note</code> permette di inserire una spiegazione più dettagliata sui parametri inseriti.
+    */
+   private JTextArea note;
+
+   /**
+    * <p> l'attributo <code>invio</code> è un button per confermare gli inserimenti effettuati.
+    */
+   private JButton invio;
+
 
     /**
-     *
-     * @param select
+     * Costruttore della classe FrameAggiungiParametri2. Innizializza la schermata
+     * per l'assegnazione dei parametri ad un luogo precedentemente selezionato
+     * @param select nome del luogo precedentemente selezionato
      */
     public FrameAggiungiParametri2(String select) {
         super("Assegnamento parametri: "+select);

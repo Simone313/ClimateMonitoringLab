@@ -4,18 +4,7 @@
  */
 package com.climatemonitoring.climatemonitoringlab;
 
-/**
- * L'istanza della classe FrameAggiungiParametri permette all'utente di 
- * selezionare a quale delle aree presenti nel centro di monitoraggio associato
- * andare a modificare i parametri
- * 
- * 
- * @author Simone Marino 
- * @author Andri Tosku
- * @author Mattia Statti
- * @author Defo Tagne Gabin Alban
- */
-import climatemonitoring.*;
+
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -28,26 +17,40 @@ import java.util.LinkedList;
 import javax.swing.*;
 
 /**
- *
- * @author simo0
+ * L'istanza della classe FrameAggiungiParametri permette all'utente di 
+ * selezionare a quale delle aree presenti nel centro di monitoraggio associato
+ * andare a modificare i parametri
+ * 
+ * 
+ * @author Simone Marino 
+ * @author Andri Tosku
+ * @author Mattia Statti
+ * @author Defo Tagne Gabin Alban
  */
 public class FrameAggiungiParametri extends JFrame{
     /**
-     * <p> l'attributo <code>label</code> visualizza la scritta 'Seleziona l'area da modificare'
-     * <p> l'attributo <code>gruppo</code> contiene tutte le aree associate ad un centro di monitoraggio
-     * <p> l'attributo <code>select</code> è una stringa che indica l'area selezionata
-     * <p> l'attributo <code>invio</code> è un button che serve per confermare la scelta
-     */
-    
-    private JLabel label;
-    private ButtonGroup gruppo;
-    private String select;
-    private JButton invio;
+    * <p> l'attributo <code>label</code> visualizza la scritta 'Seleziona l'area da modificare'.
+    */
+   private JLabel label;
+   /**
+    * <p> l'attributo <code>gruppo</code> contiene tutte le aree associate ad un centro di monitoraggio.
+    */
+   private ButtonGroup gruppo;
+   /**
+    * <p> l'attributo <code>select</code> è una stringa che indica l'area selezionata.
+    */
+   private String select;
+   /**
+    * <p> l'attributo <code>invio</code> è un button che serve per confermare la scelta.
+    */
+   private JButton invio;
+
 
     /**
-     *
-     * @throws SQLException
-     * @throws RemoteException
+     * Costruttore della classe FrameAggiungiParametri. Inizializza la schermata
+     * per la selezione del luogo al quale assegnare i parametri
+     * @throws SQLException SQLException
+     * @throws RemoteException RemoteException
      */
     public FrameAggiungiParametri() throws SQLException, RemoteException{
         super("Modifica area");

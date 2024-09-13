@@ -4,18 +4,8 @@
  */
 package com.climatemonitoring.climatemonitoringlab;
 
-/**
- * L'istanza della classe FrameVisualizazzioneCentri mostra tutti i centri 
- * di monitoraggio presenti all'interno del database
- * 
- * 
- * @author Simone Marino 
- * @author Andri Tosku
- * @author Mattia Statti
- * @author Defo Tagne Gabin Alban
- */
 
-import climatemonitoring.*;
+
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -26,22 +16,36 @@ import java.rmi.RemoteException;
 import javax.swing.*;
 
 /**
- *
- * @author simo0
+ * L'istanza della classe FrameVisualizazzioneCentri mostra tutti i centri 
+ * di monitoraggio presenti all'interno del database
+ * 
+ * 
+ * @author Simone Marino 
+ * @author Andri Tosku
+ * @author Mattia Statti
+ * @author Defo Tagne Gabin Alban
  */
 public class FrameVisualizzazioneCentri extends JFrame {
     /**
-     * <p> l'attributo <code>label</code> viene tuilizzato per mostrare a schermo una frase
-     * <p> l'attributo <code>centriCreati</code> è una textArea che mostra tutti i centri creati
-     * <p> l'attributo <code>indietro</code> è un button che permette all'utente di tornare alla schermata precedente 
-     */
-    private JLabel label;
-    private JTextArea centriCreati;
-    private JButton indietro;
+    * <p> L'attributo <code>label</code> viene utilizzato per mostrare a schermo una frase.
+    */
+   private JLabel label;
+
+   /**
+    * <p> L'attributo <code>centriCreati</code> è una <code>JTextArea</code> che mostra tutti i centri creati.
+    */
+   private JTextArea centriCreati;
+
+   /**
+    * <p> L'attributo <code>indietro</code> è un <code>JButton</code> che permette all'utente di tornare alla schermata precedente.
+    */
+   private JButton indietro;
+
 
     /**
-     *
-     * @throws RemoteException
+     * Costruttore della classe FrameAggiungiParametri2. Innizializza la schermata
+     * per La visualizzazione dei centri di monitoraggio creati
+     * @throws RemoteException RemoteException
      */
     public FrameVisualizzazioneCentri() throws RemoteException{
         super("Centri di monitoraggio");

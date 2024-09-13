@@ -5,9 +5,14 @@
 package com.climatemonitoring.climatemonitoringlab;
 
 
-import climatemonitoring.*;
+import static com.climatemonitoring.climatemonitoringlab.FrameRegistrazioneOperatore.registrazioneAvvenuta;
 import java.awt.BorderLayout;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
@@ -23,9 +28,11 @@ import java.time.LocalDate;
 import java.util.LinkedList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JButton;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 /**
  *
@@ -40,26 +47,36 @@ import javax.swing.SwingConstants;
 public class ServerCM extends UnicastRemoteObject implements ServerInterface{
     
     /**
-     *
-     * @throws RemoteException
+     * Costruttore della classe ServerCM
+     * @throws RemoteException RemoteException
      */
     public ServerCM() throws RemoteException {}
     /**
-	 * <p> l'attributo <code>url</code> contiene una serie di informazioni per la connessione con il database (protocollo, indirizzo del server, numero di porta, ecc...)
-	 * <p> l'attributo <code>user</code> contiene il nome dell'utente del database
-	 * <p> l'attributo <code>password</code> contiene la password per accedere al database
-         * <p> l'attributo <code>conn</code> viene utilizzato per aprire una connessione con il database
-	 */
-    private static  String url = "jdbc:postgresql://127.0.0.1:5432/postgres";
-    private static String user = "postgres";
-    private static String password = "climatemonitoring";
-    private static Connection conn;
+    * <p> L'attributo <code>url</code> contiene una serie di informazioni per la connessione con il database, inclusi il protocollo, l'indirizzo del server, e il numero di porta.
+    */
+   private static String url = "jdbc:postgresql://127.0.0.1:5432/postgres";
+
+   /**
+    * <p> L'attributo <code>user</code> contiene il nome dell'utente utilizzato per accedere al database.
+    */
+   private static String user = "postgres";
+
+   /**
+    * <p> L'attributo <code>password</code> contiene la password necessaria per accedere al database.
+    */
+   private static String password = "climatemonitoring";
+
+   /**
+    * <p> L'attributo <code>conn</code> viene utilizzato per gestire e aprire una connessione con il database.
+    */
+   private static Connection conn;
+
 
     /**
-     *
-     * @param args
-     * @throws SQLException
-     * @throws RemoteException
+     * metodo main del server
+     * @param args arguments
+     * @throws SQLException SQLException
+     * @throws RemoteException RemoteException
      */
     public static void main(String[] args) throws SQLException, RemoteException{
         conn = DriverManager.getConnection(url, user, password);
@@ -76,16 +93,62 @@ public class ServerCM extends UnicastRemoteObject implements ServerInterface{
         int x = (Toolkit.getDefaultToolkit().getScreenSize().width - frame.getSize().width) / 2;
         int y = (Toolkit.getDefaultToolkit().getScreenSize().height - frame.getSize().height) / 2;
         frame.setLocation(x, y);
-        JLabel label = new JLabel("Server avviato correttamente!", SwingConstants.CENTER);
-        frame.setLayout(new BorderLayout());
-        frame.add(label, BorderLayout.CENTER);
+        JLabel labeluser = new JLabel("Inserisci username: ");
+        JLabel labelpsw = new JLabel("Inserisci password: ");
+        JLabel labelhost = new JLabel("Inserisci host (es. 127.0.0.1): ");
+        JTextField usertxt= new JTextField(10);
+        JTextField pswtxt= new JTextField(10);
+        JTextField hosttxt= new JTextField(10);
+        JButton invio= new JButton("Invio");
+        frame.setLayout(new GridBagLayout());
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        gbc.insets = new Insets(5, 5, 5, 5);
+        
+        gbc.gridx=0;
+        gbc.gridy=0;
+        frame.add(labeluser,gbc);
+        
+        gbc.gridx=0;
+        gbc.gridy=1;
+        frame.add(labelpsw,gbc);
+        
+        gbc.gridx=0;
+        gbc.gridy=3;
+        frame.add(labelhost,gbc);
+        
+        gbc.gridx=1;
+        gbc.gridy=0;
+        frame.add(usertxt,gbc);
+        
+        gbc.gridx=1;
+        gbc.gridy=1;
+        frame.add(pswtxt,gbc);
+        
+        gbc.gridx=1;
+        gbc.gridy=3;
+        frame.add(hosttxt,gbc);
+        
+        gbc.gridx=2;
+        gbc.gridy=4;
+        frame.add(invio,gbc);
+        
+        invio.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                user=usertxt.getText();
+                password= pswtxt.getText();
+                url="jdbc:postgresql://"+hosttxt.getText()+":5432/postgres";
+            }
+        });
+        
         frame.setVisible(true);
     }
     /**
-     * 
+     * metodo che restituise la lista dei nomi del centro di monitoraggio associato all'operatore che si è registrato o ha fatto l'accesso
      * @param op Operatore di riferimento
-     * @return restituise la lista dei nomi del centro di monitoraggio associato all'operatore che si è registrato o ha fatto l'accesso
-     * @throws RemoteException 
+     * @return lista dei nomi del centro di monitoraggio associato all'operatore che si è registrato o ha fatto l'accesso
+     * @throws RemoteException RemoteException
      */
     @Override
     public LinkedList<String> getListaNomiCentromonitoraggio(Operatore op) throws RemoteException {
@@ -107,12 +170,12 @@ public class ServerCM extends UnicastRemoteObject implements ServerInterface{
         return null;
     }
     /**
-     * 
+     * metodo che restituisce l'oggetto operatore dato il nome, cognome e password
      * @param nom è il nome dell'operatore
      * @param con è il cognome dell'operatore
      * @param pass è la password dell'operatore
-     * @return restituisce l'oggetto operatore
-     * @throws RemoteException 
+     * @return oggetto operatore
+     * @throws RemoteException RemoteException
      */
     @Override
     public Operatore getOperatore(String nom, String con, String pass) throws RemoteException {
@@ -138,7 +201,7 @@ public class ServerCM extends UnicastRemoteObject implements ServerInterface{
         return o;
     }
     /**
-     * 
+     * metodo che imposta i parametri climatici passati come parametri
      * @param select è il luogo di riferimento
      * @param nomeCentro è il nome del centro di monitoraggio al quale appartiene il luogo
      * @param ven è il parametro del vento
@@ -149,7 +212,7 @@ public class ServerCM extends UnicastRemoteObject implements ServerInterface{
      * @param aG è il parametro dell'altezza dei ghiacciai
      * @param mG è il parametro della massa dei ghiacciai
      * @param not sono le note inserite dall'operatore
-     * @throws RemoteException 
+     * @throws RemoteException RemoteException
      */
     @Override
     public void setParametriclimatici(String select, String nomeCentro, int ven, int umi, int pre, int  temp, int precipit, int aG, int mG, String not) throws RemoteException {
@@ -181,10 +244,10 @@ public class ServerCM extends UnicastRemoteObject implements ServerInterface{
     }
     
     /**
-     * 
+     * metodo che restituisce il nome del centro di monitoraggio associato al nome
      * @param n nome del centro di monitoraggio
-     * @return restituisce il nome del centro di monitoraggio associato al nome
-     * @throws SQLException 
+     * @return nome del centro di monitoraggio associato al nome
+     * @throws SQLException SQLException
      */
     private static CentroMonitoraggio getCentroMonitoraggio(String n) throws SQLException{
         CentroMonitoraggio cm = null;
@@ -212,13 +275,13 @@ public class ServerCM extends UnicastRemoteObject implements ServerInterface{
         return cm;
     }
     /**
-     * 
+     * metodo che aggiorna il nome e le coordinate di un luogo
      * @param op l'oggetto operatore di riferimento
      * @param nome nuovo nome dell'area
      * @param coordinate coordinate dell'area
      * @param nomeAreaCercata nome precedente dell'area
-     * @throws RemoteException
-     * @throws SQLException 
+     * @throws RemoteException RemoteException
+     * @throws SQLException SQLException
      */
     @Override
     public void updateNomeCoordinateCentroMonitoraggio(Operatore op, String nome, String coordinate, String nomeAreaCercata) throws RemoteException, SQLException {
@@ -231,10 +294,10 @@ public class ServerCM extends UnicastRemoteObject implements ServerInterface{
         selStmt.executeUpdate(stmt);
     }
     /**
-     * 
+     * metodo che restituisce true se il codice fiscale è già presente nel database, false altrimenti
      * @param cf codice fiscale dell'operatore
-     * @return restituisce true se il codice fiscale è già presente nel database, false altrimenti
-     * @throws RemoteException 
+     * @return true se il codice fiscale è già presente nel database, false altrimenti
+     * @throws RemoteException RemoteException
      */
     @Override
     public boolean operatoriEsistenti(String cf) throws RemoteException {
@@ -252,9 +315,9 @@ public class ServerCM extends UnicastRemoteObject implements ServerInterface{
         return risposta;
     }
     /**
-     * 
-     * @return resittuisce true se sono già stati creati dei centri di monitoraggio, false altrimenti
-     * @throws RemoteException 
+     * metodo che resittuisce true se sono già stati creati dei centri di monitoraggio, false altrimenti
+     * @return true se sono già stati creati dei centri di monitoraggio, false altrimenti
+     * @throws RemoteException RemoteException
      */
     @Override
     public boolean centrimonitoraggioEsistenti() throws RemoteException {
@@ -273,9 +336,9 @@ public class ServerCM extends UnicastRemoteObject implements ServerInterface{
     }
     
     /**
-     * 
-     * @return restituisce una lista contenente il nome di tutti i centri di monitoraggio creati
-     * @throws RemoteException 
+     * metodo che restituisce una lista contenente il nome di tutti i centri di monitoraggio creati
+     * @return lista contenente il nome di tutti i centri di monitoraggio creati
+     * @throws RemoteException RemoteException
      */
     @Override
     public LinkedList<String> getCentriMonitoraggioCreati()throws RemoteException{
@@ -295,12 +358,12 @@ public class ServerCM extends UnicastRemoteObject implements ServerInterface{
         return null;
     }
     /**
-     * 
+     * metodo che restituisce true se l'autenticazione è andata a buon fine, false altrimenti
      * @param n nome dell'operatore da controllare
      * @param c cognome dell'operatore da controllare
      * @param pa password dell'operatore da controllare
-     * @return restituisce true se l'autenticazione è andata a buon fine, false altrimenti
-     * @throws RemoteException 
+     * @return true se l'autenticazione è andata a buon fine, false altrimenti
+     * @throws RemoteException RemoteException
      */
     @Override
     public boolean controlloCredenzialiAccesso(String n, String c, String pa)throws RemoteException{
@@ -330,10 +393,10 @@ public class ServerCM extends UnicastRemoteObject implements ServerInterface{
     }
     
     /**
-     * 
+     * metodo che restituisce la lista delle aree del centro
      * @param s array il cui primo elemento è il nome del centro di monitoraggio
-     * @return restituisce la lista delle aree del centro
-     * @throws SQLException
+     * @return lista delle aree del centro
+     * @throws SQLException SQLException
      */
     public static LinkedList<Area> toAreaListStatic(String[] s) throws SQLException{
             LinkedList<Area> risposta = new LinkedList<Area>();
@@ -353,11 +416,11 @@ public class ServerCM extends UnicastRemoteObject implements ServerInterface{
             return risposta;
         }
     /**
-     * 
+     * metodo che restituisce la lista delle aree del centro
      * @param s array il cui primo elemento è il nome del centro di monitoraggio
-     * @return restituisce la lista delle aree del centro
-     * @throws SQLException
-     * @throws RemoteException 
+     * @return lista delle aree del centro
+     * @throws SQLException SQLException
+     * @throws RemoteException RemoteException
      */
     @Override
     public LinkedList<Area> toAreaList(String[] s) throws SQLException, RemoteException {
@@ -378,9 +441,9 @@ public class ServerCM extends UnicastRemoteObject implements ServerInterface{
         return risposta;    
     }
     /**
-     * 
-     * @return restituisce una stringa contenente tutti i centri di monitoraggio creati
-     * @throws RemoteException 
+     * metodo che restituisce una stringa contenente tutti i centri di monitoraggio creati
+     * @return stringa contenente tutti i centri di monitoraggio creati
+     * @throws RemoteException RemoteException
      */
     @Override
     public String visualizzaCentri() throws RemoteException{
@@ -405,11 +468,11 @@ public class ServerCM extends UnicastRemoteObject implements ServerInterface{
         return null;
     }
     /**
-     * 
+     * metodo che va a modificare il nome del centro di monitoraggio
      * @param op operatore di riferimento
      * @param nuovoNome nuovo nome da assegnare al centro
-     * @throws SQLException
-     * @throws RemoteException 
+     * @throws SQLException SQLException
+     * @throws RemoteException RemoteException
      */
     @Override
     public void modificaNomeCentro(Operatore op, String nuovoNome) throws SQLException, RemoteException{
@@ -420,13 +483,21 @@ public class ServerCM extends UnicastRemoteObject implements ServerInterface{
         + "WHERE \"NomeCentro\" = '" + nomeCorrente + "'";
 
         selStmt.executeUpdate(stmt);
+        
+        selStmt = conn.createStatement();
+        String cfOperatore=op.getCodiceFiscale();
+        stmt = "UPDATE operatori "
+        + "SET \"centromonitoraggio\" = '" + nuovoNome + "' "
+        + "WHERE \"cf\" = '" + cfOperatore + "'";
+
+        selStmt.executeUpdate(stmt);
     }
     /**
-     * 
+     * metodo che va a modificare l'indirizzo del centro di monitoraggio
      * @param op operatore di riferimento
      * @param nuovoIndirizzo nuovo indirizzo da assegnare al centro
-     * @throws SQLException
-     * @throws RemoteException 
+     * @throws SQLException SQLException
+     * @throws RemoteException RemoteException
      */
     @Override
     public void modificaIndirizzoCentro(Operatore op, String nuovoIndirizzo) throws SQLException, RemoteException{
@@ -440,12 +511,12 @@ public class ServerCM extends UnicastRemoteObject implements ServerInterface{
         selStmt.executeUpdate(stmt);
     }
     /**
-     * 
+     * metodo che restituisce le informazioni relative all'area cercata per nome
      * @param nome nome dell'area cercata
-     * @return restituisce le informazioni relative all'area cercata
-     * @throws IOException
-     * @throws SQLException 
-     * @throws java.rmi.RemoteException 
+     * @return informazioni relative all'area cercata
+     * @throws IOException IOException
+     * @throws SQLException SQLException
+     * @throws java.rmi.RemoteException RemoteException
      */
     @Override
     public String cercaAreaGeografica(String nome) throws IOException, SQLException, RemoteException {
@@ -509,13 +580,13 @@ public class ServerCM extends UnicastRemoteObject implements ServerInterface{
         }
     }
     /**
-     * 
+     * metodo che restituisce le informazioni relative all'area cercata per coordinate
      * @param lat latitudine dell'area da cercare
      * @param lon longitudine dell'area da cercare
      * @return restituisce le informazioni relative all'area cercata
-     * @throws IOException
-     * @throws SQLException 
-     * @throws java.rmi.RemoteException 
+     * @throws IOException IOException
+     * @throws SQLException SQLException
+     * @throws java.rmi.RemoteException RemoteException
      */
     @Override
     public String cercaAreaGeografica(String lat, String lon) throws IOException, SQLException, RemoteException {
@@ -544,11 +615,11 @@ public class ServerCM extends UnicastRemoteObject implements ServerInterface{
         return risp;
     }
     /**
-     * 
+     * metodo che inserisce nella tabella operatori un nuovo operatore
      * @param op operatore del quale si desidera fare la registrazione
-     * @throws IOException
-     * @throws SQLException
-     * @throws RemoteException 
+     * @throws IOException IOException
+     * @throws SQLException SQLException
+     * @throws RemoteException RemoteException
      */
     @Override
     public void registrazione(Operatore op) throws IOException, SQLException, RemoteException {
@@ -558,29 +629,38 @@ public class ServerCM extends UnicastRemoteObject implements ServerInterface{
         st.executeUpdate(stmt);
     }
     /**
-     * 
+     * metodo che inserisce nella teballa dei centri di monitoraggio un nuovo centro
      * @param cm centro di monitoraggio del quale si desidera fare la registrazione
-     * @throws IOException
-     * @throws SQLException
-     * @throws RemoteException 
+     * @param op Operatore che effettua la registrazione del centro
+     * @throws IOException IOException
+     * @throws SQLException SQLException
+     * @throws RemoteException RemoteException
      */
     @Override
-    public void registraCentroAree(CentroMonitoraggio cm) throws IOException, SQLException, RemoteException {
+    public void registraCentroAree(CentroMonitoraggio cm, Operatore op) throws IOException, SQLException, RemoteException {
         for(int i=0;i<cm.getAree().size();i++){
             Statement st= conn.createStatement();
             String stmt="INSERT INTO centromonitoraggio VALUES('"+cm.getNome()+"','"+cm.getIndirizzo().replace(' ','_')+"','"+cm.getAree().get(i).getNome()+"','"+cm.getAree().get(i).getLatitudine()+","+cm.getAree().get(i).getLongitudine()+"')";
             st.executeUpdate(stmt);
         }
+        
+        Statement selStmt = conn.createStatement();
+        String cfOperatore=op.getCodiceFiscale();
+        String stmt = "UPDATE operatori "
+        + "SET \"centromonitoraggio\" = '" + cm.getNome() + "' "
+        + "WHERE \"cf\" = '" + cfOperatore + "'";
+
+        selStmt.executeUpdate(stmt);
     }
     
     
     /**
-     * 
+     * metodo che restituisce la password dell'operatore se la parola di recupero corrisponde
      * @param nomeOperatore nome dell'operatore interessato
      * @param cognomeOperatore cognome dell'operatore interessato
      * @param parolaDiRecupero parola per il recupero della password
      * @return password recuperata
-     * @throws RemoteException 
+     * @throws RemoteException RemoteException
      */
     @Override
     public String recuperoPassword(String nomeOperatore, String cognomeOperatore,String parolaDiRecupero) throws RemoteException {
@@ -602,10 +682,10 @@ public class ServerCM extends UnicastRemoteObject implements ServerInterface{
     }
     
     /**
-     * 
+     * metodo che restituisce true se esiste già un centro con questo nome, false altrimenti
      * @param nome nome del centro che deve essere controllato
-     * @return restituisce true se esiste già un centro con questo nome, false altrimenti
-     * @throws RemoteException 
+     * @return truee se esiste già un centro con questo nome, false altrimenti
+     * @throws RemoteException RemoteException
      */
     @Override
     public boolean centroGiaEsistente(String nome) throws RemoteException {

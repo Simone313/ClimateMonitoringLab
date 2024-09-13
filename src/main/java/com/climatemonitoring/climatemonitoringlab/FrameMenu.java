@@ -5,7 +5,6 @@
 package com.climatemonitoring.climatemonitoringlab;
 
 
-import climatemonitoring.*;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -30,23 +29,38 @@ import javax.swing.*;
  */
 public class FrameMenu extends JFrame{
     /**
-     * <p> l'attributo <code>label</code> mostra una frase
-     * <p> l'attributo <code>op1</code> rappresenta l'opzione di visualizzazione di tutti i centri
-     * <p> l'attributo <code>op2</code> rappresenta l'opzione di creazione di un nuovo centro
-     * <p> l'attributo <code>op3</code> rappresenta l'opzione di modifica del centro 
-     * <p> l'attributo <code>op4</code> rappresenta l'opzione di assegnamento dei parametri
-     * <p> l'attributo <code>gruppo</code> raggruppa tutte le opzioni
-     * <p> l'attributo <code>select</code> è un intero utilizzato per indicare quale tra le quattro opzioni è stata scelta
-     * <p> l'attributo <code>invio</code> è un button utilizzato per confermare la scelta
-     */
-    private JLabel label;
-    private JRadioButton op1;
-    private JRadioButton op2;
-    private JRadioButton op3;
-    private JRadioButton op4;
-    private ButtonGroup gruppo;
-    private JButton invio;
-    private int select=0;
+    * <p> L'attributo <code>label</code> mostra una frase.
+    */
+   private JLabel label;
+   /**
+    * <p> L'attributo <code>op1</code> rappresenta l'opzione di visualizzazione di tutti i centri.
+    */
+   private JRadioButton op1;
+   /**
+    * <p> L'attributo <code>op2</code> rappresenta l'opzione di creazione di un nuovo centro.
+    */
+   private JRadioButton op2;
+   /**
+    * <p> L'attributo <code>op3</code> rappresenta l'opzione di modifica del centro.
+    */
+   private JRadioButton op3;
+   /**
+    * <p> L'attributo <code>op4</code> rappresenta l'opzione di assegnamento dei parametri.
+    */
+   private JRadioButton op4;
+   /**
+    * <p> L'attributo <code>gruppo</code> raggruppa tutte le opzioni.
+    */
+   private ButtonGroup gruppo;
+   /**
+    * <p> L'attributo <code>select</code> è un intero utilizzato per indicare quale tra le quattro opzioni è stata scelta.
+    */
+   private int select = 0;
+   /**
+    * <p> L'attributo <code>invio</code> è un button utilizzato per confermare la scelta.
+    */
+   private JButton invio;
+
     
     /**
      * indica l'istanza della classe FrameModificaCentro che può essere eventualmente creata
